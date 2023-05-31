@@ -1,6 +1,33 @@
 ﻿* Encoding: UTF-8.
 
 DATASET ACTIVATE DataSet1.
+
+/* Aufgabe 1.1 Deskriptive Statistiken & Reliabilität
+/* Verteilung und Item-Schwirigkeiten
+
+FREQUENCIES VARIABLES=AO2Aest1_SQ001 AO2Fant1_SQ001 AO2Hand1R_SQ001 AO2Idee1R_SQ001
+    AO1Gefu1_SQ001 AO1Fant1_SQ001 AO1Idee_SQ001 FFIO2Wert2R_SQ001
+  /STATISTICS=STDDEV MINIMUM MAXIMUM MEAN
+  /HISTOGRAM
+  /ORDER=ANALYSIS.
+
+/* Trennschärfen
+
+RELIABILITY
+  /VARIABLES=AO2Aest1_SQ001 AO2Fant1_SQ001 AO2Hand1R_SQ001 AO2Idee1R_SQ001
+    AO1Gefu1_SQ001 AO1Fant1_SQ001 AO1Idee_SQ001 FFIO2Wert2R_SQ001
+  /SCALE('ALL VARIABLES') ALL
+  /MODEL=ALPHA
+  /SUMMARY=TOTAL.
+
+
+
+/* Aufgabe 1.2 Validität und Faktorenanalyse
+/*    TODO
+
+/* Aufgabe 2 Validität, Finale Item-Selektion
+/* Scalen
+
 COMPUTE SummeFFIE=Sum(
     FFIE1Gese1_SQ001, FFIE1Gese2R_SQ001, FFIE1Herz1_SQ001, FFIE1Herz2Z_SQ001,
     FFIE1PosE1_SQ001, FFIE1PosE2R_SQ001, FFIE1PosE3R_SQ001, FFIE1PosE4_SQ001,
@@ -36,21 +63,23 @@ COMPUTE SummeFFIV=Sum(
     FFIV2Entg2R_SQ001, FFIV2Entg3R_SQ001, FFIV2Guth1R_SQ001, FFIV2Guth2Z_SQ001).
 EXECUTE.
 
-* unsere Scala (unsere 4 Items in erster Zeile)
-* AO1Gefu1_SQ001        # weil wir kein Gefuehl-Item haben # [Ich fühle mit anderen mit.]
-* AO1Fant1_SQ001        # Ich gehe davon aus, dass dies eher mit Gewissenhaftigkeit korreliert. # [Spontane Ausflüge stressen mich.]
-* AO1Idee_SQ001          # Ich glaube, das ist ein besonders gutes Item. # [Ich fordere mein Gehirn gerne mit theoretischen Aufgaben heraus.]
-* FFIO2Wert2R_SQ001 # um ein FFIO- und Wert-Item zu haben # [Ich glaube, daß es Schüler oft nur verwirrt und irreführt, wenn man sie Rednern zuhören läßt, die kontroverse Standpunkte vertreten]
+/* unsere Scala (unsere 4 Items in erster Zeile)
+/* AO1Gefu1_SQ001        # weil wir kein Gefuehl-Item haben # [Ich fühle mit anderen mit.]
+/* AO1Fant1_SQ001        # Ich gehe davon aus, dass dies eher mit Gewissenhaftigkeit korreliert. # [Spontane Ausflüge stressen mich.]
+/* AO1Idee_SQ001          # Ich glaube, das ist ein besonders gutes Item. # [Ich fordere mein Gehirn gerne mit theoretischen Aufgaben heraus.]
+/* FFIO2Wert2R_SQ001 # um ein FFIO- und Wert-Item zu haben # [Ich glaube, daß es Schüler oft nur verwirrt und irreführt, wenn man sie Rednern zuhören läßt, die kontroverse Standpunkte vertreten]
 
 COMPUTE SummeO=Sum(
     AO2Aest1_SQ001, AO2Fant1_SQ001, AO2Hand1R_SQ001, AO2Idee1R_SQ001,
     AO1Gefu1_SQ001, AO1Fant1_SQ001, AO1Idee_SQ001, FFIO2Wert2R_SQ001).
 EXECUTE.
 
-
-
-
-
+/* Validität
+ 
+CORRELATIONS
+  /VARIABLES=SummeFFIE SummeFFIG SummeFFIN SummeFFIO SummeFFIV SummeO
+  /PRINT=TWOTAIL NOSIG FULL
+  /MISSING=PAIRWISE.
 
 
 
