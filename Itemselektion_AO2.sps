@@ -2,24 +2,75 @@
 
 DATASET ACTIVATE DataSet1.
 
+ * O-Items aller Seminargruppen:
+AO1Fant1_SQ001 AO1Gefu1_SQ001 AO1Hand1R_SQ001 AO1Idee_SQ001
+AO2Aest1_SQ001 AO2Fant1_SQ001 AO2Hand1R_SQ001 AO2Idee1R_SQ001
+BO1Fant1_SQ001 BO1Gefu1_SQ001 BO1Hand1R_SQ001 BO1Idee1_SQ001
+BO2Aest1_SQ001 BO2Fant1_SQ001 BO2Hand1R_SQ001 BO2Idee1_SQ001
+DO1Aest1_SQ001 DO1Fant1_SQ001 DO1Fant2R_SQ001 DO1Gefu1_SQ001
+
 /* Aufgabe 1.1 Deskriptive Statistiken & Reliabilität
-/* Verteilung und Item-Schwirigkeiten
+/* VERTEILUNG und Item-SCHWIERIGKEITEN
 
 FREQUENCIES VARIABLES=AO2Aest1_SQ001 AO2Fant1_SQ001 AO2Hand1R_SQ001 AO2Idee1R_SQ001
-    AO1Gefu1_SQ001 AO1Fant1_SQ001 AO1Idee_SQ001 FFIO2Wert2R_SQ001
+    AO1Gefu1_SQ001 AO1Idee_SQ001 DO1Fant2R_SQ001 FFIO2Wert2R_SQ001
   /STATISTICS=STDDEV MINIMUM MAXIMUM MEAN
   /HISTOGRAM
   /ORDER=ANALYSIS.
 
-/* Trennschärfen
+ * FREQUENCIES VARIABLES=AO1Fant1_SQ001 AO1Gefu1_SQ001 AO1Hand1R_SQ001 AO1Idee_SQ001
+    AO2Aest1_SQ001 AO2Fant1_SQ001 AO2Hand1R_SQ001 AO2Idee1R_SQ001
+    BO1Fant1_SQ001 BO1Gefu1_SQ001 BO1Hand1R_SQ001 BO1Idee1_SQ001
+    BO2Aest1_SQ001 BO2Fant1_SQ001 BO2Hand1R_SQ001 BO2Idee1_SQ001
+    DO1Aest1_SQ001 DO1Fant1_SQ001 DO1Fant2R_SQ001 DO1Gefu1_SQ001
+  /STATISTICS=STDDEV MINIMUM MAXIMUM MEAN
+  /HISTOGRAM
+ /ORDER=ANALYSIS.
+
+/* TRENNSCHÄRFEN
 
 RELIABILITY
   /VARIABLES=AO2Aest1_SQ001 AO2Fant1_SQ001 AO2Hand1R_SQ001 AO2Idee1R_SQ001
-    AO1Gefu1_SQ001 AO1Fant1_SQ001 AO1Idee_SQ001 FFIO2Wert2R_SQ001
+    AO1Gefu1_SQ001 AO1Idee_SQ001 DO1Fant2R_SQ001 FFIO2Wert2R_SQ001
   /SCALE('ALL VARIABLES') ALL
   /MODEL=ALPHA
   /SUMMARY=TOTAL.
 
+/* nur zum Vergleich alle FFIO Items
+
+ * RELIABILITY
+  /VARIABLES=FFIO1Aest1_SQ001, FFIO1Aest2R_SQ001, FFIO1Aest3_SQ001, FFIO1Fant1R_SQ001,
+    FFIO1Fant2Z_SQ001, FFIO1Gefu1R_SQ001, FFIO1Gefu2Z_SQ001, FFIO2Hand1_SQ001,
+    FFIO2Hand2RZ_SQ001, FFIO2Idee1_SQ001, FFIO2Idee2_SQ001, FFIO2Idee3R_SQ001,
+    FFIO2Idee4R_SQ001, FFIO2Wert1R_SQ001, FFIO2Wert2R_SQ001
+      /SCALE('ALL VARIABLES') ALL
+  /MODEL=ALPHA
+  /SUMMARY=TOTAL.
+
+/* nur zum Vergleich alle O-Items der Seminargruppen
+    
+ * RELIABILITY
+  /VARIABLES=AO1Fant1_SQ001 AO1Gefu1_SQ001 AO1Hand1R_SQ001 AO1Idee_SQ001
+    AO2Aest1_SQ001 AO2Fant1_SQ001 AO2Hand1R_SQ001 AO2Idee1R_SQ001
+    BO1Fant1_SQ001 BO1Gefu1_SQ001 BO1Hand1R_SQ001 BO1Idee1_SQ001
+    BO2Aest1_SQ001 BO2Fant1_SQ001 BO2Hand1R_SQ001 BO2Idee1_SQ001
+    DO1Aest1_SQ001 DO1Fant1_SQ001 DO1Fant2R_SQ001 DO1Gefu1_SQ001
+  /SCALE('ALL VARIABLES') ALL
+  /MODEL=ALPHA
+  /SUMMARY=TOTAL.
+
+ * Analyse 1.1: (1x Aest, 2x Fant, 1x Gefu, 1x Hand, 2x Idee, 1x Wert)
+AO2Aest1_SQ001: ganz ok
+AO2Fant1_SQ001: ähnlich gut wie AO2Hand1R 
+AO2Hand1R_SQ001: ziemlich gut trennendes Item mit relativ gleichmäßiger Verteilung. Finde es auch inhaltlich gut. :-)
+AO2Idee1R_SQ001: ??? inhaltlich ok, aber stark konzentriert auf 3 (Schwierigkeit 2,83; StdAbweichung 0,88 !!), vielleicht aber nur aufgrund der relativ homogenen Stichprobe.
+ * aber ausgerechnet dieses Item hat die höchste Trennschärfe von 0,322! und am gewichtigsten bei Cronbachs Alpha!
+AO1Gefu1_SQ001: xxx statistisch sehr problematisch, starke konzentration auf 3 und 4 und Antwort 0 wurde nie gewählt, StdAbw=0,68!!! (hat tatsächlich auch eine sehr schwache Trennschärfe von 0,023, weglassen auch für C-Alpha besser!)
+AO1Idee_SQ001: eigentlich ganz gut (auch inhaltlich). etwas rechtssteil, das aber vermutlich aufgrund der eher akademischen Stichprobe? (Trennschärfe mit 0,099 recht gering)
+DO1Fant2R_SQ001: ??? inhaltlich eigentlich ganz ok, allerdings sehr linkssteil und auf 1 konzentriert (Schwierigkeit 1,36; StdAbw 0,803; Trennschärfe 0,018!!!),
+das aber vielleicht aufgrund der eher akademischen Stichprobe; Umformulierung in Betracht ziehen, wenn stärkere Trennschärfe innerhalb akademischer Zielgruppe gewünscht ist.
+ * FFIO2Wert2R_SQ001: leicht rechtssteil, aber inhaltlich bin ich mir unsicher (schlechtestes FFIO-Item)
+Scala: Korrelation der Items mit der Scala durchweg niedrig (mit 0,322 bei Item AO2Idee1R am höchsten) und Cronbachst Alpha von gerade mal 0,388.
 
 
 /* Aufgabe 1.2 Validität und Faktorenanalyse
