@@ -67,8 +67,8 @@ AO2Idee1R_SQ001: ??? inhaltlich ok, aber stark konzentriert auf 3 (Schwierigkeit
  * aber ausgerechnet dieses Item hat die höchste Trennschärfe von 0,322! und am gewichtigsten bei Cronbachs Alpha!
 AO1Gefu1_SQ001: xxx statistisch sehr problematisch, starke konzentration auf 3 und 4 und Antwort 0 wurde nie gewählt, StdAbw=0,68!!! (hat tatsächlich auch eine sehr schwache Trennschärfe von 0,023, weglassen auch für C-Alpha besser!)
 AO1Idee_SQ001: eigentlich ganz gut (auch inhaltlich). etwas rechtssteil, das aber vermutlich aufgrund der eher akademischen Stichprobe? (Trennschärfe mit 0,099 recht gering)
-DO1Fant2R_SQ001: ??? inhaltlich eigentlich ganz ok, allerdings sehr linkssteil und auf 1 konzentriert (Schwierigkeit 1,36; StdAbw 0,803; Trennschärfe 0,018!!!),
-das aber vielleicht aufgrund der eher akademischen Stichprobe; Umformulierung in Betracht ziehen, wenn stärkere Trennschärfe innerhalb akademischer Zielgruppe gewünscht ist.
+DO1Fant2R_SQ001: xxx inhaltlich wohl verwirrend, denn sehr linkssteil und auf 1 konzentriert (Schwierigkeit 1,36; StdAbw 0,803; Trennschärfe 0,018!!!),
+läuft Offenheit komplett entgegen, obwohl eher akademische Stichprobe; Umformulierung in Betracht ziehen, wenn stärkere Trennschärfe innerhalb akademischer Zielgruppe gewünscht ist.
  * FFIO2Wert2R_SQ001: leicht rechtssteil, aber inhaltlich bin ich mir unsicher (schlechtestes FFIO-Item)
 Scala: Korrelation der Items mit der Scala durchweg niedrig (mit 0,322 bei Item AO2Idee1R am höchsten) und Cronbachst Alpha von gerade mal 0,388.
 
