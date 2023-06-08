@@ -207,7 +207,50 @@ RELIABILITY
   /MODEL=ALPHA
   /SUMMARY=TOTAL.
 
+CORRELATIONS
+  /VARIABLES=SummeFFIE SummeFFIG SummeFFIN SummeFFIO SummeFFIV SummeO
+  /PRINT=TWOTAIL NOSIG FULL
+  /MISSING=PAIRWISE.
+
 /* Spätestens ab hier lohnt sich keine weitere Elimination, denn:
 /* Elimination von DO1Fant2R_SQ001 aufgrund höherer Reliabilität interessant, führt aber zu einer allgemeinen Verschlechterung der Validität.
 /* AO1Idee_SQ001 würde sich wegen leicht höherer Validität und schwacher Ladung auf Openness ein wenig lohnen, würde aber ebenfalls zu allgemeiner Verschlechterung der Validität führen.
 /* Bei allen anderen Items würde es mindestens zu einer deutlichen Verschlechterung der Reliabilität(Cronbach's Alpha) führen.
+
+/* Elimination von DO1Fant2R
+
+COMPUTE SummeO=Sum(
+    AO2Aest1_SQ001, AO2Fant1_SQ001, AO2Hand1R_SQ001, AO2Idee1R_SQ001,
+    AO1Idee_SQ001, FFIO2Wert2R_SQ001).
+EXECUTE.
+
+RELIABILITY
+  /VARIABLES=AO2Aest1_SQ001 AO2Fant1_SQ001 AO2Hand1R_SQ001 AO2Idee1R_SQ001
+    AO1Idee_SQ001 FFIO2Wert2R_SQ001
+  /SCALE('ALL VARIABLES') ALL
+  /MODEL=ALPHA
+  /SUMMARY=TOTAL.
+
+CORRELATIONS
+  /VARIABLES=SummeFFIE SummeFFIG SummeFFIN SummeFFIO SummeFFIV SummeO
+  /PRINT=TWOTAIL NOSIG FULL
+  /MISSING=PAIRWISE.
+
+/* Elimination von AO1Idee
+
+COMPUTE SummeO=Sum(
+    AO2Aest1_SQ001, AO2Fant1_SQ001, AO2Hand1R_SQ001, AO2Idee1R_SQ001,
+    FFIO2Wert2R_SQ001).
+EXECUTE.
+
+RELIABILITY
+  /VARIABLES=AO2Aest1_SQ001 AO2Fant1_SQ001 AO2Hand1R_SQ001 AO2Idee1R_SQ001
+    FFIO2Wert2R_SQ001
+  /SCALE('ALL VARIABLES') ALL
+  /MODEL=ALPHA
+  /SUMMARY=TOTAL.
+
+CORRELATIONS
+  /VARIABLES=SummeFFIE SummeFFIG SummeFFIN SummeFFIO SummeFFIV SummeO
+  /PRINT=TWOTAIL NOSIG FULL
+  /MISSING=PAIRWISE.
